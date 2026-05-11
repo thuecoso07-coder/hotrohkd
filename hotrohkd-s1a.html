@@ -1104,21 +1104,21 @@ body {
   <!-- TAB: LỊCH THUẾ -->
   <div class="tab-content" id="tab-calendar">
     <div id="countdownCard" class="countdown-card">
-      <div class="countdown-label">⏰ Đếm ngược đến hạn kê khai</div>
+     <!--  <div class="countdown-label">⏰ Đếm ngược đến hạn kê khai</div>
       <div class="countdown-days" id="countdownDays">--</div>
-      <div class="countdown-sub" id="countdownSub">Đang tính...</div>
+      <div class="countdown-sub" id="countdownSub">Đang tính...</div> -->
     </div>
 
     <div class="calendar-grid">
       <div class="cal-item monthly">
-        <div class="cal-badge">Hàng tháng</div>
-        <div class="cal-deadline">Ngày 20</div>
-        <div class="cal-desc">Nộp hồ sơ trước ngày 20 tháng kê khai</div>
+        <div class="cal-badge">Kinh doanh năm 2026</div>
+        <div class="cal-deadline">Kỳ khai lần 1 ngày 30/06/2026 và Kỳ khai lần 2 31/12/2026</div>
+        <div class="cal-desc">Nộp hồ sơ trước ngày 31/07/2026 và 31/01/2027</div>
       </div>
       <div class="cal-item quarterly">
-        <div class="cal-badge">Hàng quý</div>
-        <div class="cal-deadline">Ngày 30</div>
-        <div class="cal-desc">Nộp hồ sơ trước ngày 30 tháng cuối quý</div>
+        <div class="cal-badge">Kinh doanh trước năm 2026 </div>
+        <div class="cal-deadline">Ngày 31/12/2026</div>
+        <div class="cal-desc">Nộp hồ sơ trước ngày 31 tháng 1 năm sau</div>
       </div>
     </div>
 
@@ -1273,8 +1273,8 @@ body {
         <div class="form-group">
           <label class="form-label">Phương pháp kê khai</label>
           <select class="form-input" id="bizMethod">
-            <option value="monthly">Kê khai theo tháng (hạn ngày 20)</option>
-            <option value="quarterly">Kê khai theo quý (hạn ngày 30)</option>
+            <option value="monthly">HKD mới thành lập trong năm (kê khai 2 lần: 31/7 và 31/1)</option>
+            <option value="quarterly">HKD đã hoạt động từ năm trước (kê khai 1 lần: 31/1)</option>
           </select>
         </div>
         <button class="btn btn-primary" onclick="saveSettings()">💾 Lưu thông tin</button>
@@ -1390,8 +1390,8 @@ body {
     <div class="form-group">
       <label class="form-label">Phương pháp kê khai</label>
       <div class="toggle-group">
-        <button class="toggle-btn active" id="notifMonthly" onclick="toggleNotif('monthly')">Tháng</button>
-        <button class="toggle-btn" id="notifQuarterly" onclick="toggleNotif('quarterly')">Quý</button>
+        <button class="toggle-btn active" id="notifMonthly" onclick="toggleNotif('monthly')">HKD mới thành lập trong năm 2026(kê khai 2 lần: 31/7 và 31/1)</button>
+        <button class="toggle-btn" id="notifQuarterly" onclick="toggleNotif('quarterly')">HKD đã hoạt động từ năm trước (kê khai 1 lần: 31/1)</button>
       </div>
     </div>
 
@@ -1629,7 +1629,7 @@ function renderStats() {
 }
 
 /* ===== RENDER CALENDAR ===== */
-function renderCalendar() {
+/* function renderCalendar() {
   const now = new Date();
   const method = settings.bizMethod || 'monthly';
   let deadline, deadlineLabel;
@@ -1644,12 +1644,11 @@ function renderCalendar() {
     const endMonth = (quarter+1)*3; // 3, 6, 9, 12
     deadline = new Date(now.getFullYear(), endMonth, 30);
     if(deadline < now) {
-      deadline = new Date(now.getFullYear(), endMonth+3, 30);
+      deadline = new Date(now.getFullYear(), endMonth+12, 30);
     }
-    const qNum = Math.ceil(deadline.getMonth()/3);
+    const qNum = Math.ceil(deadline.getMonth()/12);
     deadlineLabel = `Ngày 30 tháng ${deadline.getMonth()+1}/${deadline.getFullYear()} (Quý ${qNum})`;
-  }
-
+  } 
   const diff = Math.ceil((deadline - now) / (1000*60*60*24));
   const card = document.getElementById('countdownCard');
   const daysEl = document.getElementById('countdownDays');
@@ -1669,7 +1668,7 @@ function renderCalendar() {
     card.style.background = '';
   }
 }
-
+*/
 /* ===== RENDER PERIOD SUMMARY ===== */
 function renderPeriodSummary() {
   if(transactions.length === 0) return;
