@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="S1a-HKD">
+<meta name="theme-color" content="#0A1628">
+<meta name="description" content="Sổ doanh thu S1a-HKD - Hỗ trợ hộ kinh doanh kê khai thuế | Thuế Cơ sở 7 Thành phố Hồ Chí Minh">
+<title>S1a-HKD | Thuế Cơ sở 7 Thành phố Hồ Chí Minh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES & RESET ===== */
+:root {
+  --navy: #0A1628;
+  --navy-2: #12213A;
+  --navy-3: #1A2F50;
+  --red: #C62828;
+  --red-light: #E53935;
+  --gold: #E8A000;
+  --gold-light: #FFB300;
+  --teal: #00897B;
+  --teal-light: #26A69A;
+  --bg: #F0F2F5;
+  --surface: #FFFFFF;
+  --surface-2: #F8F9FB;
+  --text: #1A1A2E;
+  --text-2: #4A5568;
+  --text-3: #8896AB;
+  --border: #E2E8F0;
+  --shadow: 0 2px 12px rgba(10,22,40,0.10);
+  --shadow-lg: 0 8px 32px rgba(10,22,40,0.16);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+  --font: 'Be Vietnam Pro', sans-serif;
+  --nav-h: 60px;
+  --header-h: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ===== HEADER ===== */
+.app-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 100;
+  gap: 12px;
+}
+
+.header-logo {
+  width: 38px; height: 38px;
+  background: var(--red);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: -0.5px;
+}
+
+.header-info { flex: 1; min-width: 0; }
+
+.header-title {
+  font-size: 15px; font-weight: 700;
+  color: #fff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.header-sub {
+  font-size: 11px; color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.header-btn {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.10);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.header-btn:hover { background: rgba(255,255,255,0.18); }
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: calc(var(--nav-h) + var(--safe-bottom));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  z-index: 100;
+  padding-bottom: var(--safe-bottom);
+}
+
+.nav-item {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px;
+  cursor: pointer; border: none; background: transparent;
+  color: var(--text-3);
+  transition: color 0.2s;
+  padding: 8px 4px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-item.active { color: var(--red); }
+
+.nav-icon {
+  font-size: 22px; line-height: 1;
+  position: relative;
+}
+
+.nav-item.active .nav-icon::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 2px;
+  background: var(--red);
+}
+
+.nav-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+  padding-top: calc(var(--header-h) + 16px);
+  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 80px);
+  min-height: 100vh;
+}
+
+.tab-content {
+  display: none;
+  padding: 0 16px;
+  animation: fadeIn 0.25s ease;
+}
+.tab-content.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ===== STATS ROW ===== */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.stat-card.red::before { background: var(--red); }
+.stat-card.gold::before { background: var(--gold); }
+.stat-card.teal::before { background: var(--teal); }
+.stat-card.navy::before { background: var(--navy); }
+
+.stat-card-full {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-lg);
+  color: #fff;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card-full::after {
+  content: '₫';
+  position: absolute;
+  right: -10px; top: -10px;
+  font-size: 80px; font-weight: 800;
+  color: rgba(255,255,255,0.05);
+  font-family: var(--font);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stat-full-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 18px; font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.stat-full-value {
+  font-size: 28px; font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.stat-sub {
+  font-size: 11px; color: var(--text-3);
+  margin-top: 2px;
+}
+
+.stat-full-sub {
+  font-size: 12px; color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+}
+
+/* ===== MONTH FILTER ===== */
+.month-filter {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.month-filter label {
+  font-size: 13px; font-weight: 600;
+  color: var(--text-2); white-space: nowrap;
+}
+
+.month-filter select {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-family: var(--font);
+  font-size: 14px; font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.month-filter select:focus { border-color: var(--red); }
+
+/* ===== TRANSACTION LIST ===== */
+.tx-list { display: flex; flex-direction: column; gap: 8px; }
+
+.tx-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.tx-item:active { transform: scale(0.98); }
+
+.tx-date-badge {
+  width: 44px; min-width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%);
+  border-radius: 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: #fff;
+}
+
+.tx-date-day { font-size: 18px; font-weight: 800; line-height: 1; }
+.tx-date-mon { font-size: 9px; font-weight: 500; opacity: 0.7; letter-spacing: 0.3px; }
+
+.tx-info { flex: 1; min-width: 0; }
+
+.tx-desc {
+  font-size: 14px; font-weight: 600;
+  color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.tx-detail {
+  font-size: 11px; color: var(--text-3);
+  margin-top: 2px;
+}
+
+.tx-amount {
+  font-size: 15px; font-weight: 800;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+.tx-actions {
+  display: flex; gap: 6px;
+}
+
+.tx-btn {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.tx-btn.edit { background: #EBF5FF; color: #1565C0; }
+.tx-btn.edit:hover { background: #BBDEFB; }
+.tx-btn.del { background: #FFEBEE; color: var(--red); }
+.tx-btn.del:hover { background: #FFCDD2; }
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-3);
+}
+
+.empty-icon { font-size: 52px; margin-bottom: 12px; }
+.empty-title { font-size: 16px; font-weight: 700; color: var(--text-2); margin-bottom: 6px; }
+.empty-sub { font-size: 13px; line-height: 1.5; }
+
+/* ===== FAB ===== */
+.fab {
+  position: fixed;
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + 16px);
+  right: 20px;
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: var(--red);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 26px;
+  box-shadow: 0 4px 20px rgba(198,40,40,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 90;
+  -webkit-tap-highlight-color: transparent;
+}
+.fab:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(198,40,40,0.55); }
+.fab:active { transform: scale(0.95); }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,22,40,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex; align-items: flex-end;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.modal-overlay.open {
+  opacity: 1; pointer-events: auto;
+}
+
+.modal-sheet {
+  width: 100%;
+  background: var(--surface);
+  border-radius: 24px 24px 0 0;
+  padding: 8px 20px 20px;
+  padding-bottom: calc(20px + var(--safe-bottom));
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-overlay.open .modal-sheet {
+  transform: translateY(0);
+}
+
+.modal-handle {
+  width: 40px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 8px auto 16px;
+}
+
+.modal-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+/* ===== FORM ===== */
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+  display: block;
+  font-size: 12px; font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-input:focus {
+  border-color: var(--red);
+  background: #fff;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  border: none; cursor: pointer;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-weight: 700;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  padding: 14px 20px;
+  font-size: 15px;
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(198,40,40,0.35);
+}
+.btn-primary:hover { background: var(--red-light); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text-2);
+  padding: 14px 20px;
+  font-size: 15px;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+}
+.btn-secondary:hover { background: var(--border); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-2);
+  padding: 10px 14px;
+  font-size: 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.btn-row {
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 10px; margin-top: 8px;
+}
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+
+.section-title {
+  font-size: 15px; font-weight: 800;
+  color: var(--text);
+  display: flex; align-items: center; gap: 6px;
+}
+
+.section-link {
+  font-size: 12px; font-weight: 600;
+  color: var(--red);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ===== TAX CALENDAR ===== */
+.countdown-card {
+  background: linear-gradient(135deg, var(--red) 0%, #8B1A1A 100%);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  color: #fff;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 32px rgba(198,40,40,0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-card::after {
+  content: '⏰';
+  position: absolute;
+  right: 16px; top: 50%; transform: translateY(-50%);
+  font-size: 70px; opacity: 0.15;
+}
+
+.countdown-label {
+  font-size: 12px; font-weight: 600;
+  opacity: 0.8; margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.countdown-days {
+  font-size: 48px; font-weight: 800;
+  line-height: 1; margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+
+.countdown-sub { font-size: 14px; opacity: 0.8; }
+
+.countdown-good {
+  background: linear-gradient(135deg, var(--teal) 0%, #00574B 100%);
+  box-shadow: 0 8px 32px rgba(0,137,123,0.35);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cal-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--border);
+}
+.cal-item.monthly { border-left-color: var(--red); }
+.cal-item.quarterly { border-left-color: var(--gold); }
+
+.cal-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.monthly .cal-badge { background: #FFEBEE; color: var(--red); }
+.quarterly .cal-badge { background: #FFF8E1; color: #E65100; }
+
+.cal-deadline {
+  font-size: 20px; font-weight: 800;
+  color: var(--text); line-height: 1;
+  margin-bottom: 2px;
+}
+
+.cal-desc { font-size: 11px; color: var(--text-3); }
+
+.form-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.form-card:hover { border-color: var(--red); transform: translateY(-1px); }
+.form-card:active { transform: scale(0.98); }
+
+.form-card-code {
+  display: inline-block;
+  font-size: 11px; font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--navy);
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.form-card-title {
+  font-size: 14px; font-weight: 700;
+  color: var(--text); margin-bottom: 4px;
+}
+
+.form-card-desc {
+  font-size: 12px; color: var(--text-3);
+  line-height: 1.5;
+}
+
+/* ===== EXPORT TAB ===== */
+.export-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.export-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+.export-card:active { transform: scale(0.98); }
+
+.export-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+
+.export-icon.print { background: #E3F2FD; }
+.export-icon.word { background: #EDE7F6; }
+.export-icon.notif { background: #E8F5E9; }
+.export-icon.json { background: #FFF3E0; }
+
+.export-text { flex: 1; }
+
+.export-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--text); margin-bottom: 2px;
+}
+
+.export-desc { font-size: 12px; color: var(--text-3); }
+
+.export-arrow { color: var(--text-3); font-size: 18px; }
+
+/* ===== SETTINGS ===== */
+.settings-section { margin-bottom: 20px; }
+
+.settings-section-title {
+  font-size: 11px; font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 0 4px;
+  margin-bottom: 8px;
+}
+
+.settings-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.settings-item:hover { background: var(--surface-2); }
+
+.settings-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+.settings-text { flex: 1; }
+
+.settings-label {
+  font-size: 14px; font-weight: 600;
+  color: var(--text);
+}
+
+.settings-sub {
+  font-size: 11px; color: var(--text-3);
+  margin-top: 1px;
+}
+
+.settings-arrow { color: var(--text-3); font-size: 16px; }
+
+.danger-btn {
+  background: #FFEBEE;
+  border: 1.5px solid #FFCDD2;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; cursor: pointer;
+  transition: background 0.15s;
+}
+.danger-btn:hover { background: #FFCDD2; }
+.danger-btn span { font-size: 14px; font-weight: 600; color: var(--red); }
+
+/* ===== ABOUT CARD ===== */
+.about-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  color: #fff;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+
+.about-title { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+.about-text { font-size: 12px; opacity: 0.7; line-height: 1.6; }
+.about-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+/* ===== NOTIFICATION MODAL ===== */
+.notif-box {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 12px 0;
+  min-height: 100px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1.5px dashed var(--border);
+}
+
+/* ===== DESKTOP LAYOUT ===== */
+@media (min-width: 768px) {
+  .main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .bottom-nav {
+    max-width: 480px;
+    left: 50%; transform: translateX(-50%);
+    border-radius: 20px 20px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+  }
+
+  .fab {
+    right: calc(50% - 240px + 20px);
+  }
+
+  .app-header {
+    max-width: 480px;
+    left: 50%; transform: translateX(-50%);
+    border-radius: 0 0 16px 16px;
+  }
+
+  .modal-overlay {
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal-sheet {
+    border-radius: var(--radius-lg);
+    max-width: 480px;
+    margin: 0 auto;
+    max-height: 80vh;
+    transform: scale(0.92);
+  }
+
+  .modal-overlay.open .modal-sheet {
+    transform: scale(1);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area {
+    position: fixed; inset: 0;
+    background: white;
+    padding: 15mm 15mm;
+    font-family: 'Times New Roman', serif;
+    font-size: 11pt;
+    color: #000;
+  }
+
+  .print-header { text-align: center; margin-bottom: 8mm; }
+  .print-header .agency { font-size: 10pt; }
+  .print-header .form-name { font-size: 14pt; font-weight: bold; margin: 4mm 0 2mm; }
+  .print-header .form-sub { font-size: 10pt; }
+
+  .print-meta { margin-bottom: 6mm; }
+  .print-meta p { margin: 2mm 0; font-size: 11pt; }
+
+  .print-table { width: 100%; border-collapse: collapse; }
+  .print-table th, .print-table td {
+    border: 1px solid #000;
+    padding: 2mm 3mm;
+    font-size: 10pt;
+  }
+  .print-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+  }
+  .print-table td.num { text-align: right; }
+  .print-table td.center { text-align: center; }
+  .print-table tfoot td { font-weight: bold; }
+
+  .print-footer { margin-top: 8mm; }
+  .print-sigs { display: grid; grid-template-columns: 1fr 1fr; gap: 20mm; }
+  .print-sig { text-align: center; }
+  .print-sig-role { font-weight: bold; font-size: 10pt; }
+  .print-sig-name { margin-top: 20mm; font-weight: bold; }
+
+  .print-note { font-style: italic; font-size: 9pt; margin-top: 4mm; }
+}
+
+/* ===== TOAST ===== */
+.toast-container {
+  position: fixed;
+  top: calc(var(--header-h) + 8px);
+  left: 50%; transform: translateX(-50%);
+  z-index: 300;
+  display: flex; flex-direction: column;
+  gap: 8px; align-items: center;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 13px; font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 2.2s forwards;
+  white-space: nowrap;
+}
+
+.toast.success { background: var(--teal); }
+.toast.error { background: var(--red); }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes toastOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  height: 1px; background: var(--border);
+  margin: 12px 0;
+}
+
+/* ===== BADGE ===== */
+.badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+.badge-red { background: #FFEBEE; color: var(--red); }
+.badge-gold { background: #FFF8E1; color: #E65100; }
+.badge-teal { background: #E0F2F1; color: var(--teal); }
+
+/* ===== PERIOD SUMMARY ===== */
+.period-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.period-row:last-child { border-bottom: none; }
+.period-name { font-size: 13px; font-weight: 600; color: var(--text-2); }
+.period-val { font-size: 14px; font-weight: 800; color: var(--text); }
+
+/* ===== INPUT FILE HIDDEN ===== */
+#json-file-input { display: none; }
+
+/* ===== TOGGLE ===== */
+.toggle-group {
+  display: flex;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 3px;
+}
+.toggle-btn {
+  flex: 1; padding: 8px;
+  border: none; border-radius: 6px;
+  font-family: var(--font);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  color: var(--text-3);
+  background: transparent;
+  transition: all 0.2s;
+}
+.toggle-btn.active {
+  background: var(--surface);
+  color: var(--red);
+  box-shadow: var(--shadow);
+}
+
+/* ===== LOADING ===== */
+.spin {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== WELCOME SCREEN ===== */
+.welcome-bar {
+  background: linear-gradient(135deg, var(--navy) 0%, #1A2F50 100%);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  color: #fff;
+  margin-bottom: 14px;
+  position: relative; overflow: hidden;
+}
+
+.welcome-bar::after {
+  content: '🏛️';
+  position: absolute;
+  right: 16px; bottom: 8px;
+  font-size: 48px; opacity: 0.2;
+}
+
+.welcome-greeting {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+.welcome-name {
+  font-size: 18px; font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.welcome-sub {
+  font-size: 11px; opacity: 0.6;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOAST CONTAINER ===== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ===== PRINT AREA ===== -->
+<div id="print-area" style="display:none;"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="app-header">
+  <div class="header-logo">S1a</div>
+  <div class="header-info">
+    <div class="header-title" id="headerTitle">Sổ Doanh Thu S1a-HKD</div>
+    <div class="header-sub">Thuế Cơ Sở 7 · TP. Hồ Chí Minh</div>
+  </div>
+  <button class="header-btn" onclick="openTab('tab-settings')" title="Cài đặt">⚙️</button>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+  <!-- TAB: DANH SÁCH -->
+  <div class="tab-content active" id="tab-list">
+    <div class="welcome-bar" id="welcomeBar">
+      <div class="welcome-greeting">📋 Sổ doanh thu</div>
+      <div class="welcome-name" id="welcomeName">Chưa có thông tin hộ KD</div>
+      <div class="welcome-sub" id="welcomeSub">Vào Cài đặt để nhập thông tin hộ kinh doanh</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-card-full" id="totalCard">
+      <div class="stat-full-label">🏆 Tổng doanh thu lũy kế</div>
+      <div class="stat-full-value" id="statTotal">0 ₫</div>
+      <div class="stat-full-sub" id="statTotalSub">0 giao dịch · Chưa có dữ liệu</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card red">
+        <div class="stat-label">Tháng này</div>
+        <div class="stat-value" id="statThisMonth">0 ₫</div>
+        <div class="stat-sub" id="statThisMonthCount">0 giao dịch</div>
+      </div>
+      <div class="stat-card gold">
+        <div class="stat-label">Trung bình/ngày</div>
+        <div class="stat-value" id="statAvg">0 ₫</div>
+        <div class="stat-sub" id="statAvgSub">tháng này</div>
+      </div>
+    </div>
+
+    <!-- Month Filter -->
+    <div class="month-filter">
+      <label>📅 Lọc tháng:</label>
+      <select id="monthFilter" onchange="renderList()">
+        <option value="all">— Tất cả —</option>
+      </select>
+    </div>
+
+    <!-- Transaction List -->
+    <div class="section-header">
+      <span class="section-title">📒 Danh sách giao dịch</span>
+      <span class="section-link" id="txCount">0 giao dịch</span>
+    </div>
+
+    <div class="tx-list" id="txList">
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">Chưa có giao dịch nào</div>
+        <div class="empty-sub">Nhấn nút <strong>＋</strong> bên dưới để thêm doanh thu hằng ngày</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: LỊCH THUẾ -->
+  <div class="tab-content" id="tab-calendar">
+    <div id="countdownCard" class="countdown-card">
+      <div class="countdown-label">⏰ Đếm ngược đến hạn kê khai</div>
+      <div class="countdown-days" id="countdownDays">--</div>
+      <div class="countdown-sub" id="countdownSub">Đang tính...</div>
+    </div>
+
+    <div class="calendar-grid">
+      <div class="cal-item monthly">
+        <div class="cal-badge">Hàng tháng</div>
+        <div class="cal-deadline">Ngày 20</div>
+        <div class="cal-desc">Nộp hồ sơ trước ngày 20 tháng kê khai</div>
+      </div>
+      <div class="cal-item quarterly">
+        <div class="cal-badge">Hàng quý</div>
+        <div class="cal-deadline">Ngày 30</div>
+        <div class="cal-desc">Nộp hồ sơ trước ngày 30 tháng cuối quý</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Doanh thu theo kỳ</div>
+      <div id="periodSummary">
+        <div class="empty-state" style="padding:20px">
+          <div class="empty-sub">Chưa có dữ liệu để hiển thị</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top:4px">
+      <span class="section-title">📋 Mẫu kê khai gợi ý</span>
+    </div>
+
+    <div class="form-card" onclick="showToast('Mẫu 01/CNKD: Tờ khai thuế GTGT & TNCN hằng tháng/quý','ℹ️')">
+      <div class="form-card-code">01/CNKD</div>
+      <div class="form-card-title">Tờ khai thuế GTGT & TNCN</div>
+      <div class="form-card-desc">Kê khai doanh thu, thuế GTGT và TNCN hằng tháng hoặc quý theo NĐ 68/2025 và TT 18/TT-BTC.</div>
+    </div>
+
+    <div class="form-card" onclick="showToast('Mẫu 01-1/CNKD: Phụ lục bảng kê doanh thu chi tiết','ℹ️')">
+      <div class="form-card-code">01-1/CNKD</div>
+      <div class="form-card-title">Phụ lục bảng kê doanh thu</div>
+      <div class="form-card-desc">Chi tiết doanh thu theo từng loại hàng hóa/dịch vụ. Đính kèm khi có nhiều nhóm doanh thu.</div>
+    </div>
+
+    <div class="form-card" style="border-color: var(--red)">
+      <div class="form-card-code" style="background:var(--red)">S1a-HKD</div>
+      <div class="form-card-title">Sổ doanh thu hằng ngày ✅</div>
+      <div class="form-card-desc">Ghi chép hằng ngày (ứng dụng này). Là cơ sở lập tờ khai 01/CNKD cuối kỳ.</div>
+    </div>
+
+    <div class="card" style="background: #FFF8E1; border: 1px solid #FFE082;">
+      <div style="font-size:13px; line-height:1.7; color:#5D4037;">
+        <strong>⚖️ Căn cứ pháp lý:</strong><br>
+        • <strong>Nghị Định 68/2025/NĐ-CP</strong> – Quy định mới về hộ kinh doanh<br>
+        • <strong>Thông Tư 18/TT-BTC</strong> – Hướng dẫn kê khai thuế HKD<br>
+        • <strong>Luật Quản lý Thuế 38/2019/QH14</strong><br>
+        • Góp ý: Thuế Cơ Sở 7 Thành Phố Hồ Chí Minh
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: XUẤT FILE -->
+  <div class="tab-content" id="tab-export">
+
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-title">📅 Chọn tháng xuất</div>
+      <select class="form-input" id="exportMonth" style="margin-top:4px">
+        <option value="">— Chọn tháng —</option>
+      </select>
+    </div>
+
+    <div class="section-header">
+      <span class="section-title">🖨️ In & Xuất file</span>
+    </div>
+
+    <div class="export-card" onclick="doPrint()">
+      <div class="export-icon print">🖨️</div>
+      <div class="export-text">
+        <div class="export-title">In trang S1a-HKD (A4)</div>
+        <div class="export-desc">Mở hộp thoại in · Chuẩn mẫu Bộ Tài chính</div>
+      </div>
+      <div class="export-arrow">›</div>
+    </div>
+
+    <div class="export-card" onclick="exportWord()">
+      <div class="export-icon word">📄</div>
+      <div class="export-text">
+        <div class="export-title">Tải file Word (.doc)</div>
+        <div class="export-desc">Xuất mẫu S1a-HKD · Chỉnh sửa được</div>
+      </div>
+      <div class="export-arrow">›</div>
+    </div>
+
+    <div class="section-header" style="margin-top:8px">
+      <span class="section-title">🔔 Thông báo thuế</span>
+    </div>
+
+    <div class="export-card" onclick="openNotifModal()">
+      <div class="export-icon notif">🔔</div>
+      <div class="export-text">
+        <div class="export-title">Tạo thông báo nhắc thuế</div>
+        <div class="export-desc">Gửi qua Zalo / tin nhắn cho hộ KD</div>
+      </div>
+      <div class="export-arrow">›</div>
+    </div>
+
+    <div class="section-header" style="margin-top:8px">
+      <span class="section-title">💾 Sao lưu dữ liệu</span>
+    </div>
+
+    <div class="export-card" onclick="exportJSON()">
+      <div class="export-icon json">📤</div>
+      <div class="export-text">
+        <div class="export-title">Xuất file sao lưu (JSON)</div>
+        <div class="export-desc">Sao lưu toàn bộ dữ liệu · Tải về thiết bị</div>
+      </div>
+      <div class="export-arrow">›</div>
+    </div>
+
+    <div class="export-card" onclick="document.getElementById('json-file-input').click()">
+      <div class="export-icon" style="background:#E8EAF6">📂</div>
+      <div class="export-text">
+        <div class="export-title">Nhập dữ liệu từ file JSON</div>
+        <div class="export-desc">Khôi phục từ file sao lưu trước đó</div>
+      </div>
+      <div class="export-arrow">›</div>
+    </div>
+
+    <div style="background:#E8F5E9; border-radius:var(--radius); padding:14px; margin-top:4px; font-size:12px; color:#2E7D32; line-height:1.6;">
+      💡 <strong>Mẹo:</strong> Xuất JSON định kỳ (hàng tuần) để sao lưu an toàn. Dữ liệu lưu trong trình duyệt có thể bị mất nếu xóa dữ liệu web.
+    </div>
+  </div>
+
+  <!-- TAB: CÀI ĐẶT -->
+  <div class="tab-content" id="tab-settings">
+    <div class="about-card">
+      <div class="about-badge">v2.0 · 2026</div>
+      <div class="about-title">🏛️ Thuế Cơ Sở 7 Thành Phố Hồ Chí Minh</div>
+      <div class="about-text">Ứng dụng Sổ Doanh Thu S1a-HKD hỗ trợ hộ kinh doanh ghi chép doanh thu hằng ngày và xuất báo cáo theo mẫu Bộ Tài chính.</div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">🏢 Thông tin hộ kinh doanh</div>
+
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label">Tên hộ / cá nhân kinh doanh</label>
+          <input class="form-input" id="bizName" type="text" placeholder="Nhập tên hộ kinh doanh...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Địa chỉ kinh doanh</label>
+          <input class="form-input" id="bizAddress" type="text" placeholder="Số nhà, đường, phường/xã, quận/huyện...">
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">Mã số thuế</label>
+            <input class="form-input" id="bizTax" type="text" placeholder="VD: 0123456789">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">Địa điểm KD</label>
+            <input class="form-input" id="bizLocation" type="text" placeholder="00999">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:16px">
+          <label class="form-label">Ngành nghề kinh doanh</label>
+          <input class="form-input" id="bizIndustry" type="text" placeholder="VD: Kinh doanh ăn uống, bán lẻ...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phương pháp kê khai</label>
+          <select class="form-input" id="bizMethod">
+            <option value="monthly">Kê khai theo tháng (hạn ngày 20)</option>
+            <option value="quarterly">Kê khai theo quý (hạn ngày 30)</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="saveSettings()">💾 Lưu thông tin</button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">🗄️ Quản lý dữ liệu</div>
+
+      <div class="settings-item" onclick="exportJSON()">
+        <div class="settings-icon" style="background:#FFF3E0">📤</div>
+        <div class="settings-text">
+          <div class="settings-label">Xuất file sao lưu JSON</div>
+          <div class="settings-sub">Tải về thiết bị để sao lưu</div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+
+      <div class="settings-item" onclick="document.getElementById('json-file-input').click()">
+        <div class="settings-icon" style="background:#E8EAF6">📂</div>
+        <div class="settings-text">
+          <div class="settings-label">Nhập dữ liệu từ JSON</div>
+          <div class="settings-sub">Khôi phục từ file sao lưu</div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+
+      <button class="danger-btn" onclick="confirmClear()">
+        <span style="font-size:20px">🗑️</span>
+        <span>Xóa toàn bộ dữ liệu giao dịch</span>
+      </button>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">ℹ️ Thông tin ứng dụng</div>
+      <div class="card" style="font-size:12px; color:var(--text-2); line-height:1.8;">
+        <p>📱 <strong>Cài đặt PWA:</strong> Nhấn "Chia sẻ" → "Thêm vào Màn hình chính" để cài trên iOS/Android</p>
+        <div class="divider"></div>
+        <p>⚖️ <strong>Căn cứ:</strong> NĐ 68/2025/NĐ-CP · TT 18/TT-BTC</p>
+        <div class="divider"></div>
+        <p>🏛️ <strong>Thuế Cơ sở 7 Thành phố Hồ Chí Minh</strong></p>
+        <p>🔗 Phát triển: Tổ Nghiệp Vụ, Dự Toán, Pháp Chế * App_hotrohkd_S1a-HKD v2.0</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== BOTTOM NAV ===== -->
+<nav class="bottom-nav">
+  <button class="nav-item active" id="nav-list" onclick="openTab('tab-list')">
+    <span class="nav-icon">📋</span>
+    <span class="nav-label">Danh sách</span>
+  </button>
+  <button class="nav-item" id="nav-calendar" onclick="openTab('tab-calendar')">
+    <span class="nav-icon">📅</span>
+    <span class="nav-label">Lịch thuế</span>
+  </button>
+  <button class="nav-item" id="nav-export" onclick="openTab('tab-export')">
+    <span class="nav-icon">📤</span>
+    <span class="nav-label">Xuất file</span>
+  </button>
+  <button class="nav-item" id="nav-settings" onclick="openTab('tab-settings')">
+    <span class="nav-icon">⚙️</span>
+    <span class="nav-label">Cài đặt</span>
+  </button>
+</nav>
+
+<!-- ===== FAB ===== -->
+<button class="fab" onclick="openAddModal()" title="Thêm doanh thu">＋</button>
+
+<!-- ===== ADD/EDIT MODAL ===== -->
+<div class="modal-overlay" id="txModal" onclick="handleModalClick(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modalTitle">➕ Thêm doanh thu</div>
+
+    <div class="form-group">
+      <label class="form-label">Ngày giao dịch</label>
+      <input class="form-input" id="txDate" type="date">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Diễn giải / Nội dung</label>
+      <input class="form-input" id="txDesc" type="text" placeholder="VD: Bán hàng tạp hóa ngày 01/01...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Số tiền doanh thu (VNĐ)</label>
+      <input class="form-input" id="txAmount" type="number" placeholder="0" min="0" inputmode="decimal">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Ghi chú (tùy chọn)</label>
+      <input class="form-input" id="txNote" type="text" placeholder="Ghi chú thêm...">
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="closeModal()">Hủy</button>
+      <button class="btn btn-primary" onclick="saveTx()">💾 Lưu giao dịch</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NOTIFICATION MODAL ===== -->
+<div class="modal-overlay" id="notifModal" onclick="handleNotifModalClick(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🔔 Thông báo nhắc nộp thuế</div>
+
+    <div class="form-group">
+      <label class="form-label">Tháng/Kỳ thông báo</label>
+      <input class="form-input" id="notifMonth" type="month">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Phương pháp kê khai</label>
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="notifMonthly" onclick="toggleNotif('monthly')">Tháng</button>
+        <button class="toggle-btn" id="notifQuarterly" onclick="toggleNotif('quarterly')">Quý</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="generateNotif()" style="margin-bottom:10px">🔔 Tạo thông báo</button>
+
+    <div class="notif-box" id="notifBox">Nhấn "Tạo thông báo" để sinh nội dung...</div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="closeNotifModal()">Đóng</button>
+      <button class="btn btn-primary" onclick="copyNotif()">📋 Sao chép</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JSON INPUT ===== -->
+<input type="file" id="json-file-input" accept=".json" onchange="importJSON(event)">
+
+<script>
+/* ===================================
+   S1a-HKD App · Thuế Cơ Sở 7 TP.HCM
+   v2.0 · 2025
+=================================== */
+
+const STORAGE_KEY = 's1a_hkd_data';
+const SETTINGS_KEY = 's1a_hkd_settings';
+
+let transactions = [];
+let settings = {};
+let editingId = null;
+let notifType = 'monthly';
+
+/* ===== INIT ===== */
+function init() {
+  loadData();
+  loadSettings();
+  populateMonthFilters();
+  renderList();
+  renderStats();
+  renderCalendar();
+  renderPeriodSummary();
+  applySettings();
+  setDefaultDate();
+}
+
+/* ===== STORAGE ===== */
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    transactions = raw ? JSON.parse(raw) : [];
+  } catch(e) { transactions = []; }
+}
+
+function saveData() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+}
+
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    settings = raw ? JSON.parse(raw) : {};
+  } catch(e) { settings = {}; }
+}
+
+function saveSettings() {
+  settings.bizName = document.getElementById('bizName').value.trim();
+  settings.bizAddress = document.getElementById('bizAddress').value.trim();
+  settings.bizTax = document.getElementById('bizTax').value.trim();
+  settings.bizLocation = document.getElementById('bizLocation').value.trim();
+  settings.bizIndustry = document.getElementById('bizIndustry').value.trim();
+  settings.bizMethod = document.getElementById('bizMethod').value;
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  applySettings();
+  showToast('Đã lưu thông tin hộ KD ✓', 'success');
+}
+
+function applySettings() {
+  // Header
+  const name = settings.bizName || 'Sổ Doanh Thu S1a-HKD';
+  document.getElementById('headerTitle').textContent = name;
+  // Welcome
+  document.getElementById('welcomeName').textContent = settings.bizName || 'Chưa có thông tin hộ KD';
+  document.getElementById('welcomeSub').textContent = settings.bizAddress || 'Vào Cài đặt để nhập thông tin hộ kinh doanh';
+  // Fill settings form
+  if(settings.bizName) document.getElementById('bizName').value = settings.bizName;
+  if(settings.bizAddress) document.getElementById('bizAddress').value = settings.bizAddress;
+  if(settings.bizTax) document.getElementById('bizTax').value = settings.bizTax;
+  if(settings.bizLocation) document.getElementById('bizLocation').value = settings.bizLocation;
+  if(settings.bizIndustry) document.getElementById('bizIndustry').value = settings.bizIndustry;
+  if(settings.bizMethod) document.getElementById('bizMethod').value = settings.bizMethod;
+}
+
+/* ===== TABS ===== */
+function openTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  const navId = 'nav-' + tabId.replace('tab-', '');
+  const navEl = document.getElementById(navId);
+  if(navEl) navEl.classList.add('active');
+  // Refresh data on switch
+  if(tabId === 'tab-list') { renderStats(); renderList(); }
+  if(tabId === 'tab-calendar') { renderCalendar(); renderPeriodSummary(); }
+}
+
+/* ===== DATE UTILS ===== */
+function today() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function setDefaultDate() {
+  document.getElementById('txDate').value = today();
+  // Notif month
+  const now = new Date();
+  document.getElementById('notifMonth').value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+}
+
+function formatMoney(n) {
+  if(n === 0) return '0 ₫';
+  if(n >= 1_000_000_000) return (n/1_000_000_000).toFixed(2).replace(/\.?0+$/,'') + ' tỷ ₫';
+  if(n >= 1_000_000) return (n/1_000_000).toFixed(1).replace(/\.?0+$/,'') + ' triệu ₫';
+  return n.toLocaleString('vi-VN') + ' ₫';
+}
+
+function formatMoneyFull(n) {
+  return n.toLocaleString('vi-VN') + ' ₫';
+}
+
+function getMonthKey(dateStr) {
+  return dateStr ? dateStr.substring(0, 7) : '';
+}
+
+/* ===== MONTH FILTER POPULATION ===== */
+function populateMonthFilters() {
+  const months = [...new Set(transactions.map(t => getMonthKey(t.date)))].sort().reverse();
+  const mf = document.getElementById('monthFilter');
+  const em = document.getElementById('exportMonth');
+  const currentFilter = mf.value;
+
+  // Clear existing options (keep 'all')
+  while(mf.options.length > 1) mf.remove(1);
+  while(em.options.length > 1) em.remove(1);
+
+  const now = new Date();
+  // Add current month if not in list
+  const curMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const allMonths = months.includes(curMonth) ? months : [curMonth, ...months];
+
+  allMonths.forEach(m => {
+    const [y, mo] = m.split('-');
+    const label = `Tháng ${parseInt(mo)}/${y}`;
+    const opt1 = new Option(label, m);
+    const opt2 = new Option(label, m);
+    mf.add(opt1);
+    em.add(opt2);
+  });
+
+  if(currentFilter && currentFilter !== 'all') {
+    mf.value = currentFilter;
+  }
+
+  // Set export month to current
+  em.value = curMonth;
+}
+
+/* ===== RENDER LIST ===== */
+function renderList() {
+  const filter = document.getElementById('monthFilter').value;
+  let txs = [...transactions];
+  if(filter && filter !== 'all') {
+    txs = txs.filter(t => getMonthKey(t.date) === filter);
+  }
+  txs.sort((a,b) => b.date.localeCompare(a.date));
+
+  document.getElementById('txCount').textContent = `${txs.length} giao dịch`;
+
+  const container = document.getElementById('txList');
+
+  if(txs.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">${filter && filter !== 'all' ? 'Không có giao dịch trong tháng này' : 'Chưa có giao dịch nào'}</div>
+        <div class="empty-sub">Nhấn nút <strong>＋</strong> bên dưới để thêm doanh thu hằng ngày</div>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = txs.map(t => {
+    const d = new Date(t.date + 'T00:00:00');
+    const day = String(d.getDate()).padStart(2,'0');
+    const mon = `T${d.getMonth()+1}`;
+    return `
+      <div class="tx-item">
+        <div class="tx-date-badge">
+          <div class="tx-date-day">${day}</div>
+          <div class="tx-date-mon">${mon}</div>
+        </div>
+        <div class="tx-info">
+          <div class="tx-desc">${escapeHtml(t.desc || 'Doanh thu')}</div>
+          <div class="tx-detail">${formatDate(t.date)}${t.note ? ' · ' + escapeHtml(t.note) : ''}</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px">
+          <div class="tx-amount">+${formatMoney(t.amount)}</div>
+          <div class="tx-actions">
+            <button class="tx-btn edit" onclick="openEditModal('${t.id}')">✏️</button>
+            <button class="tx-btn del" onclick="deleteTx('${t.id}')">🗑️</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ===== RENDER STATS ===== */
+function renderStats() {
+  const total = transactions.reduce((s,t) => s+t.amount, 0);
+  document.getElementById('statTotal').textContent = formatMoney(total);
+  document.getElementById('statTotalSub').textContent = `${transactions.length} giao dịch · Lũy kế toàn bộ`;
+
+  const now = new Date();
+  const thisMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const monthTxs = transactions.filter(t => getMonthKey(t.date) === thisMonth);
+  const monthTotal = monthTxs.reduce((s,t) => s+t.amount, 0);
+
+  document.getElementById('statThisMonth').textContent = formatMoney(monthTotal);
+  document.getElementById('statThisMonthCount').textContent = `${monthTxs.length} giao dịch`;
+
+  const daysInMonth = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+  const avgPerDay = daysInMonth > 0 ? monthTotal / daysInMonth : 0;
+  document.getElementById('statAvg').textContent = formatMoney(Math.round(avgPerDay));
+}
+
+/* ===== RENDER CALENDAR ===== */
+function renderCalendar() {
+  const now = new Date();
+  const method = settings.bizMethod || 'monthly';
+  let deadline, deadlineLabel;
+
+  if(method === 'monthly') {
+    deadline = new Date(now.getFullYear(), now.getMonth(), 20);
+    if(deadline < now) deadline = new Date(now.getFullYear(), now.getMonth()+1, 20);
+    const [mo, yr] = [deadline.getMonth()+1, deadline.getFullYear()];
+    deadlineLabel = `Ngày 20 tháng ${mo}/${yr} (kê khai tháng ${mo > 1 ? mo-1 : 12}/${mo > 1 ? yr : yr-1})`;
+  } else {
+    const quarter = Math.floor(now.getMonth()/3);
+    const endMonth = (quarter+1)*3; // 3, 6, 9, 12
+    deadline = new Date(now.getFullYear(), endMonth, 30);
+    if(deadline < now) {
+      deadline = new Date(now.getFullYear(), endMonth+3, 30);
+    }
+    const qNum = Math.ceil(deadline.getMonth()/3);
+    deadlineLabel = `Ngày 30 tháng ${deadline.getMonth()+1}/${deadline.getFullYear()} (Quý ${qNum})`;
+  }
+
+  const diff = Math.ceil((deadline - now) / (1000*60*60*24));
+  const card = document.getElementById('countdownCard');
+  const daysEl = document.getElementById('countdownDays');
+  const subEl = document.getElementById('countdownSub');
+
+  daysEl.textContent = diff <= 0 ? 'HẾT HẠN' : `${diff} ngày`;
+  subEl.textContent = diff <= 0 ? 'Đã qua hạn kê khai! Cần nộp ngay.' : `Đến hạn: ${formatDate(deadline.toISOString().split('T')[0])} · ${deadlineLabel}`;
+
+  if(diff <= 0) {
+    card.className = 'countdown-card';
+    card.style.background = 'linear-gradient(135deg, #7B1FA2 0%, #4A148C 100%)';
+  } else if(diff <= 5) {
+    card.className = 'countdown-card';
+    card.style.background = 'linear-gradient(135deg, var(--red) 0%, #8B1A1A 100%)';
+  } else {
+    card.className = 'countdown-card countdown-good';
+    card.style.background = '';
+  }
+}
+
+/* ===== RENDER PERIOD SUMMARY ===== */
+function renderPeriodSummary() {
+  if(transactions.length === 0) return;
+
+  const grouped = {};
+  transactions.forEach(t => {
+    const mk = getMonthKey(t.date);
+    if(!grouped[mk]) grouped[mk] = { count: 0, total: 0 };
+    grouped[mk].count++;
+    grouped[mk].total += t.amount;
+  });
+
+  const keys = Object.keys(grouped).sort().reverse().slice(0, 6);
+  const html = keys.map(k => {
+    const [y, mo] = k.split('-');
+    return `
+      <div class="period-row">
+        <div class="period-name">Tháng ${parseInt(mo)}/${y}</div>
+        <div>
+          <div class="period-val">${formatMoney(grouped[k].total)}</div>
+          <div style="font-size:11px; color:var(--text-3); text-align:right">${grouped[k].count} GD</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('periodSummary').innerHTML = html;
+}
+
+/* ===== ADD TRANSACTION ===== */
+function openAddModal() {
+  editingId = null;
+  document.getElementById('modalTitle').textContent = '➕ Thêm doanh thu';
+  document.getElementById('txDate').value = today();
+  document.getElementById('txDesc').value = '';
+  document.getElementById('txAmount').value = '';
+  document.getElementById('txNote').value = '';
+  document.getElementById('txModal').classList.add('open');
+}
+
+function openEditModal(id) {
+  const tx = transactions.find(t => t.id === id);
+  if(!tx) return;
+  editingId = id;
+  document.getElementById('modalTitle').textContent = '✏️ Sửa giao dịch';
+  document.getElementById('txDate').value = tx.date;
+  document.getElementById('txDesc').value = tx.desc || '';
+  document.getElementById('txAmount').value = tx.amount;
+  document.getElementById('txNote').value = tx.note || '';
+  document.getElementById('txModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('txModal').classList.remove('open');
+}
+
+function handleModalClick(e) {
+  if(e.target === document.getElementById('txModal')) closeModal();
+}
+
+function saveTx() {
+  const date = document.getElementById('txDate').value;
+  const desc = document.getElementById('txDesc').value.trim();
+  const amount = parseFloat(document.getElementById('txAmount').value);
+  const note = document.getElementById('txNote').value.trim();
+
+  if(!date) { showToast('Vui lòng chọn ngày giao dịch', 'error'); return; }
+  if(!desc) { showToast('Vui lòng nhập diễn giải', 'error'); return; }
+  if(isNaN(amount) || amount < 0) { showToast('Vui lòng nhập số tiền hợp lệ', 'error'); return; }
+
+  if(editingId) {
+    const idx = transactions.findIndex(t => t.id === editingId);
+    if(idx > -1) {
+      transactions[idx] = { ...transactions[idx], date, desc, amount, note };
+    }
+    showToast('Đã cập nhật giao dịch ✓', 'success');
+  } else {
+    transactions.push({
+      id: 'tx_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
+      date, desc, amount, note,
+      created: new Date().toISOString()
+    });
+    showToast('Đã lưu giao dịch ✓', 'success');
+  }
+
+  saveData();
+  closeModal();
+  populateMonthFilters();
+  renderList();
+  renderStats();
+  renderPeriodSummary();
+}
+
+function deleteTx(id) {
+  if(!confirm('Bạn có chắc muốn xóa giao dịch này không?')) return;
+  transactions = transactions.filter(t => t.id !== id);
+  saveData();
+  populateMonthFilters();
+  renderList();
+  renderStats();
+  renderPeriodSummary();
+  showToast('Đã xóa giao dịch', '');
+}
+
+/* ===== EXPORT / PRINT ===== */
+function getExportData() {
+  const month = document.getElementById('exportMonth').value;
+  let txs = [...transactions];
+  if(month) txs = txs.filter(t => getMonthKey(t.date) === month);
+  txs.sort((a,b) => a.date.localeCompare(b.date));
+  return { txs, month };
+}
+
+function buildPrintHTML(txs, month) {
+  const biz = settings;
+  const total = txs.reduce((s,t) => s+t.amount, 0);
+  const [yr, mo] = month ? month.split('-') : ['', ''];
+
+  const rows = txs.map((t, i) => `
+    <tr>
+      <td class="center">${i+1}</td>
+      <td class="center">${formatDate(t.date)}</td>
+      <td>${escapeHtml(t.desc || '')}</td>
+      <td class="num">${formatMoneyFull(t.amount)}</td>
+      <td>${escapeHtml(t.note || '')}</td>
+    </tr>`).join('');
+
+  return `
+    <div class="print-header">
+      <div class="agency">THUẾ TP. HỒ CHÍ MINH - THUẾ CƠ SỞ 7 THÀNH PHỐ HỒ CHÍ MINH</div>
+      <div class="form-name">Sổ doanh thu bán hàng hóa, dịch vụ</div>
+      <div class="form-sub">Mẫu S1a-HKD · (Kèm theo Thông tư số 18/TT-BTC)</div>
+    </div>
+    <div class="print-meta">
+      <p><strong>Tên hộ kinh doanh:</strong> ${escapeHtml(biz.bizName || '')}</p>
+      <p><strong>Địa chỉ kinh doanh:</strong> ${escapeHtml(biz.bizAddress || '')}</p>
+      <p><strong>Mã số thuế:</strong> ${escapeHtml(biz.bizTax || '')}</p>
+      <p><strong>Địa điểm kinh doanh:</strong> ${escapeHtml(biz.bizLocation || '')}</p>
+      <p><strong>Kỳ kê khai:</strong> Tháng ${parseInt(mo)}/${yr}</p>
+    </div>
+    <table class="print-table">
+      <thead>
+        <tr>
+          <th style="width:5%">STT</th>
+          <th style="width:15%">Ngày, tháng, năm</th>
+          <th style="width:40%">Diễn giải</th>
+          <th style="width:25%">Doanh thu (VNĐ)</th>
+          <th style="width:15%">Ghi chú</th>
+        </tr>
+        <tr>
+          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows || '<tr><td colspan="5" class="center">Không có dữ liệu</td></tr>'}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="center"><strong> Tổng Cộng</strong></td>
+          <td class="num"><strong>${formatMoneyFull(total)}</strong></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="print-footer">
+      <p class="print-note">* Doanh thu bao gồm thuế GTGT</p>
+      <div class="print-sigs">
+        <div class="print-sig">
+          <div class="print-sig-role">Người lập sổ</div>
+          <div style="font-style:italic; font-size:10pt; margin-top:4mm">(Ký, ghi rõ họ tên)</div>
+          <div class="print-sig-name">........................................</div>
+        </div>
+        <div class="print-sig">
+          <div class="print-sig-role">NGƯỜI ĐẠI DIỆN HỘ KINH DOANH/CÁ NHÂN KINH DOANH</div>
+          <div style="font-style:italic; font-size:10pt; margin-top:4mm">(Ký, ghi rõ họ tên)</div>
+          <div class="print-sig-name">${escapeHtml(biz.bizName || '........................................')}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function doPrint() {
+  const { txs, month } = getExportData();
+  if(!month) { showToast('Vui lòng chọn tháng cần in', 'error'); return; }
+
+  const printArea = document.getElementById('print-area');
+  printArea.style.display = 'block';
+  printArea.innerHTML = buildPrintHTML(txs, month);
+  setTimeout(() => {
+    window.print();
+    printArea.style.display = 'none';
+  }, 300);
+}
+
+function exportWord() {
+  const { txs, month } = getExportData();
+  if(!month) { showToast('Vui lòng chọn tháng cần xuất', 'error'); return; }
+
+  const biz = settings;
+  const total = txs.reduce((s,t) => s+t.amount, 0);
+  const [yr, mo] = month.split('-');
+
+  const rows = txs.map((t, i) => `
+    <tr>
+      <td style="border:1px solid #000; padding:4px; text-align:center">${i+1}</td>
+      <td style="border:1px solid #000; padding:4px; text-align:center">${formatDate(t.date)}</td>
+      <td style="border:1px solid #000; padding:4px">${escapeHtml(t.desc || '')}</td>
+      <td style="border:1px solid #000; padding:4px; text-align:right">${formatMoneyFull(t.amount)}</td>
+      <td style="border:1px solid #000; padding:4px">${escapeHtml(t.note || '')}</td>
+    </tr>`).join('');
+
+  const html = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+      <meta charset="utf-8">
+      <meta name=ProgId content=Word.Document>
+      <title>S1a-HKD Tháng ${parseInt(mo)}/${yr}</title>
+      <style>
+        body { font-family: "Times New Roman", serif; font-size: 12pt; margin: 20mm; }
+        h2 { text-align:center; font-size:14pt; }
+        table { width:100%; border-collapse:collapse; }
+        th { border:1px solid #000; padding:4px; background:#f0f0f0; text-align:center; }
+      </style>
+    </head>
+    <body>
+      <p style="text-align:center; font-size:11pt">THUẾ TP. HỒ CHÍ MINH - THUẾ CƠ SỞ 7 THÀNH PHỐ HỒ CHÍ MINH</p>
+      <h2>Sổ doanh thu bán hàng hóa, dịch vụ</h2>
+      <p style="text-align:center; font-size:11pt">Mẫu S1a-HKD · (Kèm theo Thông tư số 18/TT-BTC)</p>
+      <br>
+      <p><strong>Tên hộ kinh doanh:</strong> ${escapeHtml(biz.bizName || '')}</p>
+      <p><strong>Địa chỉ:</strong> ${escapeHtml(biz.bizAddress || '')}</p>
+      <p><strong>Mã số thuế:</strong> ${escapeHtml(biz.bizTax || '')}</p>
+      <p><strong>Kỳ kê khai:</strong> Tháng ${parseInt(mo)}/${yr}</p>
+      <br>
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th><th>Ngày, tháng, năm</th><th>Diễn giải</th><th>Doanh thu (VNĐ)</th><th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>${rows || '<tr><td colspan="5" style="text-align:center; border:1px solid #000; padding:4px">Không có dữ liệu</td></tr>'}</tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="border:1px solid #000; padding:4px; text-align:center; font-weight:bold">Tổng Cộng</td>
+            <td style="border:1px solid #000; padding:4px; text-align:right; font-weight:bold">${formatMoneyFull(total)}</td>
+            <td style="border:1px solid #000; padding:4px"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <br>
+      <table style="width:100%; border:none">
+        <tr>
+          <td style="text-align:center; width:50%; border:none">
+            <p><strong>Người lập sổ</strong></p>
+            <p><em>(Ký, ghi rõ họ tên)</em></p>
+            <br><br><br>
+            <p>........................................</p>
+          </td>
+          <td style="text-align:center; width:50%; border:none">
+            <p><strong>NGƯỜI ĐẠI DIỆN HỘ KINH DOANH/CÁ NHÂN KINH DOANH</strong></p>
+            <p><em>(Ký, ghi rõ họ tên)</em></p>
+            <br><br><br>
+            <p>${escapeHtml(biz.bizName || '........................................')}</p>
+          </td>
+        </tr>
+      </table>
+    </body></html>`;
+
+  const blob = new Blob([html], { type: 'application/msword' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `S1a-HKD_Thang${parseInt(mo)}_${yr}.doc`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Đã tải file Word ✓', 'success');
+}
+
+/* ===== JSON IMPORT/EXPORT ===== */
+function exportJSON() {
+  const data = {
+    version: '2.0',
+    exported: new Date().toISOString(),
+    app: 'S1a-HKD · Thuế Cơ Sở 7 TP.HCM',
+    settings: settings,
+    transactions: transactions
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const d = new Date().toISOString().split('T')[0];
+  a.href = url;
+  a.download = `S1a-HKD_Backup_${d}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast(`Đã xuất ${transactions.length} giao dịch ✓`, 'success');
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if(!Array.isArray(data.transactions)) throw new Error('Không đúng định dạng');
+
+      const count = data.transactions.length;
+      if(!confirm(`Nhập ${count} giao dịch từ file "${file.name}"?\n\nLưu ý: Dữ liệu hiện tại sẽ được GHI ĐÈ!`)) return;
+
+      transactions = data.transactions;
+      if(data.settings) {
+        settings = { ...settings, ...data.settings };
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+        applySettings();
+      }
+      saveData();
+      populateMonthFilters();
+      renderList();
+      renderStats();
+      renderPeriodSummary();
+      showToast(`Đã nhập ${count} giao dịch ✓`, 'success');
+    } catch(err) {
+      showToast('File không hợp lệ hoặc bị lỗi', 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function confirmClear() {
+  if(!confirm('⚠️ CẢNH BÁO: Xóa toàn bộ dữ liệu giao dịch?\n\nHành động này KHÔNG THỂ HOÀN TÁC!\nHãy xuất JSON sao lưu trước khi xóa.')) return;
+  if(!confirm('Xác nhận lần 2: Bạn chắc chắn muốn XÓA TẤT CẢ không?')) return;
+  transactions = [];
+  saveData();
+  populateMonthFilters();
+  renderList();
+  renderStats();
+  renderPeriodSummary();
+  showToast('Đã xóa toàn bộ dữ liệu', 'error');
+}
+
+/* ===== NOTIFICATION ===== */
+function openNotifModal() {
+  document.getElementById('notifModal').classList.add('open');
+}
+
+function closeNotifModal() {
+  document.getElementById('notifModal').classList.remove('open');
+}
+
+function handleNotifModalClick(e) {
+  if(e.target === document.getElementById('notifModal')) closeNotifModal();
+}
+
+function toggleNotif(type) {
+  notifType = type;
+  document.getElementById('notifMonthly').classList.toggle('active', type === 'monthly');
+  document.getElementById('notifQuarterly').classList.toggle('active', type === 'quarterly');
+}
+
+function generateNotif() {
+  const monthVal = document.getElementById('notifMonth').value;
+  if(!monthVal) { showToast('Vui lòng chọn tháng/kỳ', 'error'); return; }
+
+  const [yr, mo] = monthVal.split('-').map(Number);
+  const biz = settings;
+  const name = biz.bizName || '[Tên hộ kinh doanh]';
+  const tax = biz.bizTax ? `MST: ${biz.bizTax}` : '';
+  const addr = biz.bizAddress || '[Địa chỉ]';
+
+  let deadline, period, deadline_full;
+  if(notifType === 'monthly') {
+    deadline = `ngày 20/${mo < 10 ? '0'+mo : mo}/${yr}`;
+    period = `tháng ${mo - 1 > 0 ? mo - 1 : 12}/${mo - 1 > 0 ? yr : yr - 1}`;
+    deadline_full = `20/${mo < 10 ? '0'+mo : mo}/${yr}`;
+  } else {
+    const q = Math.ceil(mo / 3);
+    const endMo = q * 3;
+    deadline = `ngày 30/${endMo < 10 ? '0'+endMo : endMo}/${yr}`;
+    period = `Quý ${q}/${yr}`;
+    deadline_full = `30/${endMo < 10 ? '0'+endMo : endMo}/${yr}`;
+  }
+
+  const text = `🔔 THÔNG BÁO KÊ KHAI THUẾ HỘ KINH DOANH
+
+Kính gửi: ${name}
+${tax}
+Địa chỉ: ${addr}
+
+📢 Thuế Cơ Sở 7 TP. Hồ Chí Minh thông báo:
+
+Hộ kinh doanh của Ông/Bà cần KÊ KHAI VÀ NỘP THUẾ kỳ ${period} theo quy định.
+
+⏰ HẠN NỘP: ${deadline}
+📋 Mẫu tờ khai: 01/CNKD (kèm S1a-HKD)
+📍 Nơi nộp: Cổng dịch vụ công trực tuyến https://dichvucong.gdt.gov.vn/tthc/homelogin hoặc eTaxMobile
+
+Đề nghị Ông/Bà thực hiện đúng hạn để tránh bị phạt chậm nộp theo quy định của Luật Quản lý Thuế.
+
+Trân trọng,
+Thuế Cơ Sở 7 – TP. Hồ Chí Minh
+📞 Liên hệ hỗ trợ: Tổ Nghiệp Vụ, Dự Toán, Pháp chế`;
+
+  document.getElementById('notifBox').textContent = text;
+  showToast('Đã tạo thông báo ✓', 'success');
+}
+
+function copyNotif() {
+  const text = document.getElementById('notifBox').textContent;
+  if(!text || text.startsWith('Nhấn')) { showToast('Vui lòng tạo thông báo trước', 'error'); return; }
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Đã sao chép vào clipboard ✓', 'success');
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Đã sao chép ✓', 'success');
+  });
+}
+
+/* ===== TOAST ===== */
+function showToast(msg, type = '') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 2600);
+}
+
+/* ===== UTILS ===== */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* ===== PWA MANIFEST ===== */
+function injectManifest() {
+  const manifest = {
+    name: 'S1a-HKD · Thuế Cơ Sở 7',
+    short_name: 'S1a-HKD',
+    description: 'Sổ doanh thu hộ kinh doanh · Thuế Cơ Sở 7 Thành phố Hồ Chí Minh',
+    start_url: '.',
+    display: 'standalone',
+    background_color: '#0A1628',
+    theme_color: '#0A1628',
+    icons: [
+      { src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="40" fill="%23C62828"/><text x="96" y="120" font-family="Arial" font-size="80" font-weight="900" text-anchor="middle" fill="white">S</text></svg>', sizes: '192x192', type: 'image/svg+xml' }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], {type: 'application/manifest+json'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = url;
+  document.head.appendChild(link);
+}
+
+/* ===== START ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  injectManifest();
+  init();
+});
+</script>
+</body>
+</html>
+  
