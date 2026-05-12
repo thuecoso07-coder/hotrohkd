@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#C8102E">
-  <title>HỖ TRỢ HKD S1a – Thuế Cơ Sở 7 HCM</title>
+  <title>HỖ TRỢ HKD S1a – Thuế Cơ Sở 7 TP.Hồ Chí Minh</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style>
@@ -731,7 +731,7 @@ select.fi {
   <aside id="sidebar">
     <div class="sb-logo">
       <h2>🏪 HỖ TRỢ HKD<br>S1a-HKD</h2>
-      <p>Thuế Cơ Sở 7 · TP. Hồ Chí Minh</p>
+      <p>Thuế Cơ Sở 7 TP. Hồ Chí Minh</p>
       <div class="sb-tax" id="sbTax">MST: —</div>
     </div>
     <nav class="sb-nav">
@@ -758,8 +758,8 @@ select.fi {
     </nav>
     <div class="sb-footer">
       HỖ TRỢ HKD S1a v3.0<br>
-      NĐ 68/2025 · TT 18/TT-BTC<br>
-      © Thuế Cơ Sở 7 · 2026
+      Nghị định 68/2026/NĐ-CP, Nghị định 141/2026/NĐ-CP, Thông Tư 18/2026/TT-BTC<br>
+      © Thuế Cơ Sở 7 Thành phố Hồ Chí Minh 2026
     </div>
   </aside>
 
@@ -783,7 +783,7 @@ select.fi {
     <!-- SCROLL AREA -->
     <div id="scroll">
 
-      <!-- ══ TAB: SỔ DT ══ -->
+      <!-- ══ TAB: SỔ Doanh Thu ══ -->
       <div class="tab on" id="tab-list">
         <!-- Period combobox filter -->
         <div class="pf-wrap">
@@ -807,7 +807,7 @@ select.fi {
           </div>
           <div class="sum-r">
             <div class="sum-r-main" id="sumLocCount">—</div>
-            <div class="sum-r-sub">địa điểm</div>
+            <div class="sum-r-sub">Địa điểm</div>
             <div style="font-size:40px;opacity:.3;margin-top:4px">💰</div>
           </div>
         </div>
@@ -828,7 +828,7 @@ select.fi {
       <div class="tab" id="tab-tax">
         <div class="nhom-card">
           <div class="nhom-badge">NHÓM 1 – Mẫu S1a-HKD</div>
-          <div class="nhom-info-txt">Doanh thu ≤ 1 tỷ/năm · Ghi chép đơn giản theo TT 18/TT-BTC</div>
+          <div class="nhom-info-txt">Doanh thu ≤ 1 tỷ/năm · Ghi chép đơn giản theo Thông tư số 152/2025/TT-BTC</div>
           <div class="nhom-grid">
             <div class="nhom-item">
               <span class="nhom-label">Thuế</span>
@@ -896,7 +896,7 @@ select.fi {
           </button>
           <button class="exp-btn" onclick="openPrint()">
             <div class="exp-icon">🖨️</div>
-            <div><div class="exp-lbl">In sổ S1a-HKD</div><div class="exp-desc">Mẫu chính thức theo TT 18/2023/TT-BTC</div></div>
+            <div><div class="exp-lbl">In sổ S1a-HKD</div><div class="exp-desc">Mẫu chính thức theo Thông tư số 152/2025/TT-BTC</div></div>
           </button>
         </div>
         <div class="card">
@@ -921,7 +921,7 @@ select.fi {
           </div>
           <div class="fg">
             <label class="fl">Mã số thuế (MST)</label>
-            <input class="fi" id="cfgTax" type="text" placeholder="0123456789" inputmode="numeric">
+            <input class="fi" id="cfgTax" type="text" placeholder="0793456789" inputmode="numeric">
           </div>
           <div class="fg">
             <label class="fl">Số điện thoại Zalo nhắc nhở</label>
@@ -931,16 +931,13 @@ select.fi {
             <label class="fl">Năm đăng ký kinh doanh</label>
             <select class="fi" id="cfgRegYear">
               <option value="">-- Chọn năm đăng ký --</option>
-              <option value="2026">2026 (đăng ký TRONG năm 2026)</option>
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022 trở về trước</option>
-            </select>
+              <option value="2026">2026 (đăng ký trong năm 2026)</option>
+              <option value="2025">2025 (trở về trước)</option>
+             </select>
           </div>
           <div class="fg">
-            <label class="fl">Địa chỉ cơ sở chính</label>
-            <input class="fi" id="cfgAddr" type="text" placeholder="123 Đường ABC, Phường XYZ...">
+            <label class="fl">Địa chỉ trụ sở chính</label>
+            <input class="fi" id="cfgAddr" type="text" placeholder="123 Đường ABC, phường XYZ...">
           </div>
           <div class="fg">
             <label class="fl">Ghi chú (ngành nghề...)</label>
@@ -963,10 +960,10 @@ select.fi {
 
         <div class="card">
           <div class="card-t">📝 Về ứng dụng</div>
-          <div class="info-row"><div class="info-icon">🏛️</div><div><div class="info-key">Đơn vị</div><div class="info-val">Thuế Cơ Sở 7 – Chi cục Thuế Q7, TP.HCM</div></div></div>
-          <div class="info-row"><div class="info-icon">📋</div><div><div class="info-key">Căn cứ pháp lý</div><div class="info-val">NĐ 68/2025/NĐ-CP · TT 18/TT-BTC</div></div></div>
+          <div class="info-row"><div class="info-icon">🏛️</div><div><div class="info-key">Đơn vị</div><div class="info-val">Thuế Cơ Sở 7 Thành phố Hồ Chí Minh</div></div></div>
+          <div class="info-row"><div class="info-icon">📋</div><div><div class="info-key">Căn cứ pháp lý</div><div class="info-val">Nghị định 68/2026/NĐ-CP, Nghị định 141/2026/NĐ-CP, Thông Tư 18/2026/TT-BTC</div></div></div>
           <div class="info-row"><div class="info-icon">🔄</div><div><div class="info-key">Phiên bản</div><div class="info-val">HỖ TRỢ HKD S1a v3.0 · 2026</div></div></div>
-          <div class="info-row"><div class="info-icon">📱</div><div><div class="info-key">Liên hệ hỗ trợ</div><div class="info-val" style="color:var(--blue)">Zalo: 0916.352.536</div></div></div>
+          <div class="info-row"><div class="info-icon">📱</div><div><div class="info-key">Lưu ý: </div><div class="info-val" style="color:var(--blue)">Thuế Cơ Sở 7 Thành phố Hồ Chí Minh không chịu trách nhiệm về tính chính xác, mất dữ liệu của NNT</div></div></div>
         </div>
         <div class="sp"></div>
       </div>
@@ -1101,7 +1098,7 @@ function showSaveStatus(iso) {
     const d = new Date(iso);
     const hh = String(d.getHours()).padStart(2,'0');
     const mm = String(d.getMinutes()).padStart(2,'0');
-    el.textContent = `💾 Đã lưu ${d.getDate()}/${d.getMonth()+1} lúc ${hh}:${mm}`;
+    el.textContent = `💾 Đã lưu dữ liệu ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} lúc ${hh}:${mm}`;
   } catch(_) {}
 }
 
@@ -1248,17 +1245,17 @@ function getDeadlines() {
   if (ry === 2026) {
     return [
       { id:'lan1', label:'Lần 1 – Tờ khai đăng ký 2026',
-        desc:'HKD đăng ký trong năm 2026 · Nộp tờ khai lần đầu theo NĐ 68/2025',
+        desc:'HKD đăng ký trong năm 2026 · Nộp tờ khai lần đầu theo Nghị Định 68/2026/NĐ-CP',
         date: new Date(2026, 6, 31) },       /* 31/07/2026 */
       { id:'lan2', label:'Lần 2 – Kỳ kê khai tiếp theo',
-        desc:'Kỳ kê khai thứ 2 theo NĐ 68/2025/NĐ-CP · Tờ khai năm 2026',
+        desc:'Kỳ kê khai thứ 2 theo Nghị Định 68/2026/NĐ-CP · Tờ khai năm 2026',
         date: new Date(2027, 0, 31) }        /* 31/01/2027 */
     ];
   }
   /* Đăng ký trước 2026: 1 lần/năm */
   return [
     { id:'lan1', label:'Hạn nộp tờ khai năm 2026',
-      desc:'HKD hoạt động trước 2026 · Kê khai 1 lần/năm · NĐ 68/2025/NĐ-CP',
+      desc:'HKD hoạt động trước 2026 · Kê khai 1 lần/năm · Nghị Định 68/2026/NĐ-CP',
       date: new Date(2027, 0, 31) }          /* 31/01/2027 */
   ];
 }
@@ -1302,9 +1299,9 @@ function generateZaloMsg() {
     else                lines.push(`   ⚠️ Đã quá hạn ${Math.abs(days)} ngày`);
     lines.push('');
   });
-  lines.push('Vui lòng nộp tờ khai đúng hạn để tránh bị phạt vi phạm hành chính thuế.');
+  lines.push('Vui lòng nộp tờ khai đúng hạn để tránh bị phạt vi phạm hành chính về thuế.');
   lines.push('');
-  lines.push('📞 Thuế Cơ Sở 7 – Chi cục Thuế Quận 7, TP. Hồ Chí Minh');
+  lines.push('📞 Thuế Cơ Sở 7 Thành phố Hồ Chí Minh');
   return lines.join('\n');
 }
 
@@ -1479,10 +1476,10 @@ function exportExcel() {
 
   /* Sheet 1: Sổ doanh thu toàn bộ */
   const sorted = [...S.entries].sort((a,b)=>(a.date||'').localeCompare(b.date||''));
-  const rows1  = [['STT','Ngày','Diễn giải','Địa điểm kinh doanh','Ghi chú','Số tiền (VNĐ)']];
-  sorted.forEach((e,i) => rows1.push([i+1, fmtDate(e.date), e.desc||'', getLocName(e.locationId), e.note||'', e.amount||0]));
+  const rows1  = [['STT','Ngày Tháng Năm','Diễn giải','Địa điểm kinh doanh','Số tiền (VNĐ)','Ghi chú']];
+  sorted.forEach((e,i) => rows1.push([i+1, fmtDate(e.date), e.desc||'', getLocName(e.locationId), e.amount||0,e.note||'']));
   const grand1 = sorted.reduce((s,e)=>s+(e.amount||0),0);
-  rows1.push(['','','','','TỔNG CỘNG', grand1]);
+  rows1.push(['','','','TỔNG CỘNG', grand1,'']);
   const ws1 = XLSX.utils.aoa_to_sheet(rows1);
   ws1['!cols'] = [{wch:5},{wch:12},{wch:32},{wch:26},{wch:20},{wch:18}];
   XLSX.utils.book_append_sheet(wb, ws1, 'Sổ doanh thu');
@@ -1536,27 +1533,32 @@ function openPrint() {
   </tr>`).join('');
 
   document.getElementById('printContent').innerHTML = `
+ 	<div style="text-align:center;font-size:14pt;font-weight:bold;text-transform:uppercase;margin:8pt 0 4pt">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+        <div style="text-align:center;font-size:14pt;margin:2pt 0">Độc lập – Tự do – Hạnh phúc</div>
+
+	<div style="text-align:right;font-size:10pt;line-height:1.7"> <p><b>Mẫu số: S1a-HKD</b></p></div>
+       <div style="text-align:right;font-size:10pt;margin:8pt 0 2pt">(Kèm theo TT 152/2025/TT-BTC ngày 31/12/2025)</div>
+
     <div style="display:flex;justify-content:space-between;margin-bottom:16pt">
       <div>
-        <p style="color:#C8102E;font-weight:bold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
-        <p><i>Độc lập – Tự do – Hạnh phúc</i></p>
-        <p style="margin-top:6pt">Hộ/CNKD: <b>${S.cfg.name||'………………………………'}</b></p>
-        <p>MST: <b>${S.cfg.tax||'……………………'}</b></p>
+        <p style="margin-top:6pt">Hộ kinh doanh/CNKD: <b>${S.cfg.name||'………………………………'}</b></p>
+        <p>Mã số thuế: <b>${S.cfg.tax||'……………………'}</b></p>
         <p>Địa chỉ: ${S.cfg.addr||S.cfg.locations?.[0]?.address||'………………………………………………'}</p>
         ${S.cfg.note ? `<p>Ngành nghề: ${S.cfg.note}</p>` : ''}
       </div>
-      <div style="text-align:right;font-size:10pt;line-height:1.7">
-        <p><b>Mẫu số: S1a-HKD</b></p><p>(TT 18/2023/TT-BTC)</p>
       </div>
-    </div>
-    <div style="text-align:center;font-size:14pt;font-weight:bold;text-transform:uppercase;margin:8pt 0 4pt">SỔ DOANH THU HỘ KINH DOANH</div>
-    <div style="text-align:center;font-size:11pt;margin:2pt 0">Năm ${n.getFullYear()}</div>
+	
+    
+    <div style="text-align:center;font-size:14pt;font-weight:bold;text-transform:uppercase;margin:8pt 0 4pt">SỔ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ</div>
+    <div style="text-align:center;font-size:11pt;margin:2pt 0">Kỳ kê khai: ${n.getFullYear()}</div>
     <div style="text-align:right;font-size:10pt;margin:8pt 0 2pt">Đơn vị tính: đồng</div>
     <table>
       <thead><tr>
-        <th style="width:5%">STT</th><th style="width:11%">Ngày</th>
-        <th style="width:36%">Diễn giải</th><th style="width:28%">Địa điểm KD</th>
-        <th style="width:20%">Doanh thu</th>
+        <th style="width:5%">STT</th>
+	<th style="width:11%">Ngày tháng</th>
+        <th style="width:40%">Diễn giải</th>
+	<th style="width:11%">Địa điểm KD</th>
+        <th style="width:25%">Doanh thu</th>
       </tr></thead>
       <tbody>${rows}
         <tr class="tot"><td class="cc" colspan="4">TỔNG CỘNG</td>
@@ -1564,8 +1566,10 @@ function openPrint() {
       </tbody>
     </table>
     <div class="foot">
-      TP. Hồ Chí Minh, ngày ${n.getDate()} tháng ${n.getMonth()+1} năm ${n.getFullYear()}<br>
-      <b>Người ghi sổ</b><br><br><br>(Ký, ghi rõ họ tên)
+      Ngày ${n.getDate()} tháng ${n.getMonth()+1} năm ${n.getFullYear()}<br>
+      <b>NGƯỜI ĐẠI DIỆN HỘ KINH DOANH/</b><br>
+      <b>CÁ NHÂN KINH DOANH</b>
+      <br>(Ký, ghi rõ họ tên)       
     </div>`;
   document.getElementById('printOverlay').classList.add('on');
 }
@@ -1620,7 +1624,7 @@ function openAddEntry() {
     </div>` : ''}
     <div class="fg">
       <label class="fl">Ghi chú (tuỳ chọn)</label>
-      <input class="fi" id="eNote" type="text" placeholder="Khách hàng, mã đơn...">
+      <input class="fi" id="eNote" type="text" placeholder="Khách hàng, mã hóa đơn...">
     </div>
     <button class="btn btn-r" onclick="saveEntry()">💾 Lưu giao dịch</button>
     <button class="btn btn-g" onclick="closeModal()">Hủy</button>
@@ -1730,7 +1734,7 @@ function openEditLocation(id) {
     <div class="handle"></div>
     <div class="mtitle">✏️ Sửa địa điểm</div>
     <div class="fg">
-      <label class="fl">Tên địa điểm</label>
+      <label class="fl">Mã địa điểm</label>
       <input class="fi" id="lName" type="text" value="${loc.name||''}">
     </div>
     <div class="fg">
@@ -1800,7 +1804,7 @@ function renderHeader() {
   const hdSub = document.getElementById('hdSub');
   const hdKK  = document.getElementById('hdKK');
   const sbTax = document.getElementById('sbTax');
-  hdSub.textContent = S.cfg.name ? `${S.cfg.name} · Thuế CS7` : 'Thuế Cơ Sở 7 · TP. Hồ Chí Minh';
+  hdSub.textContent = S.cfg.name ? `${S.cfg.name} · Thuế Cơ Sở 7 Thành phố Hồ Chí Minh` : 'Thuế Cơ Sở 7 Thành phố Hồ Chí Minh';
   hdKK.textContent  = S.cfg.tax || '—';
   if (sbTax) sbTax.textContent = `MST: ${S.cfg.tax || '—'}`;
 }
